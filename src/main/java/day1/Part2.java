@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Part2 {
     public static void main(String[] args) throws IOException {
-        List<Integer> numbers = Files.readAllLines(Paths.get("./src/main/resources/day2.txt"))
+        List<Integer> numbers = Files.readAllLines(Paths.get("./src/main/resources/day1-2.txt"))
                 .stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());

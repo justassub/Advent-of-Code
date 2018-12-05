@@ -1,7 +1,7 @@
 package day2
 
 object Day2 {
-  val file = "./src/main/resources/day2.txt"
+  val file = "./src/main/resources/day1-2.txt"
 
 
   def main(args: Array[String]): Unit = {
