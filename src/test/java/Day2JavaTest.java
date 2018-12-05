@@ -18,4 +18,17 @@ public class Day2JavaTest {
                         "ababab")));
 
     }
+
+    @Test //Should print fgij
+    public void testCorrectPairs() {
+        Main.correctPairs(Arrays.asList(
+                "abcde",
+                "fghij",
+                "klmno",
+                "pqrst",
+                "fguij",
+                "axcye",
+                "wvxyz"
+        ));
+    }
 }
