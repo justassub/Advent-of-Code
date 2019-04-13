@@ -15,7 +15,7 @@ class Day2Test extends FlatSpec with Matchers {
       "abcdee",
       "ababab"
     )
-    Day2.part1(boxes) shouldEqual 12
+    Day2.part1 shouldEqual 12
   }
 
   "Day 2 part 2 " should "be equal to given examples" in {
