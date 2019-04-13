@@ -15,9 +15,7 @@ object Day1 extends App {
 
   def part2(implicit seq: Seq[Int]): Int = findDuplicateFromStream(prepareContinuallyStream)
 
-
   private def prepareContinuallyStream(implicit seq: Seq[Int]) = Stream.continually(seq).flatten.scanLeft(0)(_ + _)
-
 
   private def findDuplicateFromStream(seq: Seq[Int]) = {
     import scala.collection.mutable.{Set => MutableSet}
@@ -31,5 +29,4 @@ object Day1 extends App {
 
     iterate(seq.toStream).getOrElse(0)
   }
-
 }
