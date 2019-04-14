@@ -1,19 +1,15 @@
 package year2018
 
-import util.FileReader
-
 import scala.annotation.tailrec
 
-object Day1 extends App {
-  implicit val file = "./src/main/resources/day1.txt"
-  implicit val seq = FileReader.readAndMapToInt
+object Day1 extends Main[Int, Int, Int] {
 
-  println(part1)
-  println(part2)
+  println(part1(seqInt))
+  println(part2(seqInt))
 
-  def part1(implicit seq: Seq[Int]): Int = seq.sum
+  override def part1(seq: Seq[Int]): Int = seq.sum
 
-  def part2(implicit seq: Seq[Int]): Int = findDuplicateFromStream(prepareContinuallyStream)
+  override def part2(seq: Seq[Int]): Int = findDuplicateFromStream(prepareContinuallyStream(seq))
 
   private def prepareContinuallyStream(implicit seq: Seq[Int]) = Stream.continually(seq).flatten.scanLeft(0)(_ + _)
 
@@ -29,4 +25,6 @@ object Day1 extends App {
 
     iterate(seq.toStream).getOrElse(0)
   }
+
+  override def getFileName = "day1.txt"
 }

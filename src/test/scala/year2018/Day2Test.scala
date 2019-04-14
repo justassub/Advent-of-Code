@@ -15,7 +15,7 @@ class Day2Test extends FlatSpec with Matchers {
       "abcdee",
       "ababab"
     )
-    Day2.part1 shouldEqual 12
+    Day2.part1(boxes) shouldEqual 12
   }
 
   "Day 2 part 2 " should "be equal to given examples" in {
@@ -28,13 +28,13 @@ class Day2Test extends FlatSpec with Matchers {
       "axcye",
       "wvxyz"
     )
-    Day2.part2 shouldEqual "fgij"
+    Day2.part2(boxes) shouldEqual "fgij"
   }
 
   "Day 2 part 2 " should "be equal to correct Answer" in {
     implicit val file = "./src/main/resources/day2.txt"
     implicit val seq = FileReader.readResource.toList
 
-    Day2.part2 shouldEqual "asgwjcmzredihqoutcylvzinx"
+    Day2.part2(seq) shouldEqual "asgwjcmzredihqoutcylvzinx"
   }
 }

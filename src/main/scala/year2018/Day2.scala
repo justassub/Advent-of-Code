@@ -1,14 +1,11 @@
 package year2018
 
-import util.FileReader
+object Day2 extends Main[String, Int, String] {
 
-object Day2 extends App {
-  implicit val file = "./src/main/resources/day2.txt"
-  implicit val seq = FileReader.readResource.toList
-  println(part1)
-  println(part2)
+  println(part1(seqString))
+  println(part2(seqString))
 
-  def part1(implicit seq: Seq[String]): Int = seq.count(hasCount(2)) * seq.count(hasCount(3))
+  def part1(seq: Seq[String]): Int = seq.count(hasCount(2)) * seq.count(hasCount(3))
 
   private def hasCount(count: Int)(letters: String) = letterCounts(letters).values.toSet.contains(count)
 
@@ -17,8 +14,8 @@ object Day2 extends App {
       .groupBy(identity) // (abcba will be Map(a => aa, b => bb, c => c)
       .mapValues(a => a.length)
 
-  def part2(implicit seq: Seq[String]): String = {
-    createPairs(seq)
+  def part2(seq: Seq[String]): String = {
+    createPairs(seq.toList)
       .find(pair => differenceBetweenLetters(pair._1, pair._2) == 1)
       .map(pair => commonLetters(pair._1, pair._2))
       .getOrElse("NOTHING")
@@ -39,4 +36,6 @@ object Day2 extends App {
 
   private def commonLetters(string1: String, string2: String) =
     string1 zip string2 filter (pair => pair._1 == pair._2) map (_._1) mkString
+
+  override def getFileName = "day2.txt"
 }
