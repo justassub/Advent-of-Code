@@ -4,9 +4,11 @@ import scala.collection.mutable
 
 object Day3 extends Main[String, Int, Int] {
   println(part1(seqString))
+  println(part2(seqString))
+
   case class Rectangle(id: Int, left: Int, top: Int, width: Int, height: Int)
 
-  private def buildRectangleFromLine(line: String): Option[Rectangle] = {
+  def buildRectangleFromLine(line: String): Option[Rectangle] = {
     //#1 @ 393,863: 11x29
     val rectangleRegex = "#(.*?) @ (.*?),(.*?): (.*?)x(.*)".r
     line match {
@@ -33,6 +35,27 @@ object Day3 extends Main[String, Int, Int] {
   }
 
 
-  override def part2(seq: Seq[String]) = ???
+  override def part2(seq: Seq[String]) = {
+    val rectangles = seq.map(buildRectangleFromLine).flatten.toSet
+    val overlaps: mutable.Map[(Int, Int), Rectangle] = mutable.Map.empty
+    val nonOverlaps: mutable.Set[Rectangle] = rectangles.to[mutable.Set]
+
+    for {
+      rect@Rectangle(_, left, top, width, height) <- rectangles
+      x <- left until (left + width)
+      y <- top until (top + height)
+    } {
+      val pos = (x, y)
+      if (overlaps.contains(pos)) {
+        nonOverlaps -= rect
+        nonOverlaps -= overlaps(pos)
+      }
+      else
+        overlaps(pos) = rect
+    }
+
+    nonOverlaps.head.id
+  }
+
   override def getFileName = "day3.txt"
 }
