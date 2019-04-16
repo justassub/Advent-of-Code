@@ -20,16 +20,18 @@ object Day4 extends Main[String, Int, Int] {
   override def getFileName = "day4.txt"
 
   println(part1(seqString))
+  println(part2(seqString))
 
   override def part1(seq: Seq[String]) = {
     val notes = seq.map(Parsers.parseToNote).flatten
     val (id, sleepTimes) = sleepSchedule(notes).maxBy(_._2.map(_.minutesAsleep.size).sum)
-    sleepTimes
+    val minute = sleepTimes
       .flatMap(_.minutesAsleep)
       .groupBy(identity)
       .mapValues(_.size)
       .maxBy(_._2)
-      ._2 * id
+      ._1
+    minute * id
   }
 
   def sleepSchedule(notes: Seq[Note]): Map[Int, Seq[SleepSchedule]] = {
@@ -62,7 +64,13 @@ object Day4 extends Main[String, Int, Int] {
     iterate(sorted, None, None)
   }
 
-  override def part2(seq: Seq[String]) = 2
+  override def part2(seq: Seq[String]) = {
+    val notes = seq.map(Parsers.parseToNote).flatten
+    val schedules = sleepSchedule(notes)
+    val mostFreqMinMap = schedules.mapValues(_.flatMap(_.minutesAsleep).groupBy(identity).mapValues(_.length).maxBy(_._2))
+    val (id, (minute, _)) = mostFreqMinMap.maxBy(_._2._2)
+    id * minute
+  }
 }
 
 object Parsers {
