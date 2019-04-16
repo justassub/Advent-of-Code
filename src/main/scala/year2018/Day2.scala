@@ -12,7 +12,7 @@ object Day2 extends Main[String, Int, String] {
   private def letterCounts(letters: String) =
     letters
       .groupBy(identity) // (abcba will be Map(a => aa, b => bb, c => c)
-      .mapValues(a => a.length)
+      .mapValues(_.length)
 
   def part2(seq: Seq[String]): String = {
     createPairs(seq.toList)
