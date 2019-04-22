@@ -11,7 +11,7 @@ object Day01 extends Main2015[String, Int, Int] {
 
   override def part2(seq: Seq[String]) = {
     val text = seq.head
-    text.scanLeft(0)((result, floorMark) => result + pointByFloor(floorMark))
+    text.scanLeft(0)(_ + pointByFloor(_))
       .zipWithIndex
       .find(_._1 == -1)
       .get
