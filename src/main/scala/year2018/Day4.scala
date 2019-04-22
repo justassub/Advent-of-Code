@@ -71,7 +71,6 @@ object Day4 extends Main2018[String, Int, Int] {
     id * minute
   }
 
-  override def getFileName = "day4.txt"
 }
 
 object Parsers {

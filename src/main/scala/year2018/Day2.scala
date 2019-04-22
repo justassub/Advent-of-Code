@@ -37,5 +37,4 @@ object Day2 extends Main2018[String, Int, String] {
   private def commonLetters(string1: String, string2: String) =
     string1 zip string2 filter (pair => pair._1 == pair._2) map (_._1) mkString
 
-  override def getFileName = "day2.txt"
 }

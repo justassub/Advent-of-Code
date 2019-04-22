@@ -5,8 +5,6 @@ object Day1 extends Main2017[String, Int, Int] {
   println(part1(seqString))
   println(part2(seqString))
 
-  override def getFileName = "day1.txt"
-
   override def part1(seq: Seq[String]) = {
     val numbers = Day1Util.textToInt(seq.head)
     val shiftedNumbers = Day1Util.moveDigitsAround(numbers)
@@ -18,7 +16,6 @@ object Day1 extends Main2017[String, Int, Int] {
     val shiftedNumbers = Day1Util.moveDigitsAround(numbers)(numbers.size / 2)
     Day1Util.sameIndexElements(numbers, shiftedNumbers).sum
   }
-
 }
 
 object Day1Util {

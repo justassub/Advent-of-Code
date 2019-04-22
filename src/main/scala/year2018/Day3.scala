@@ -57,5 +57,4 @@ object Day3 extends Main2018[String, Int, Int] {
     nonOverlaps.head.id
   }
 
-  override def getFileName = "day3.txt"
 }

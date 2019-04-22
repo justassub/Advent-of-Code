@@ -25,6 +25,4 @@ object Day1 extends Main2018[Int, Int, Int] {
 
     iterate(seq.toStream).getOrElse(0)
   }
-
-  override def getFileName = "day1.txt"
 }
