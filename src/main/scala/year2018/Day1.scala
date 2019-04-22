@@ -2,7 +2,7 @@ package year2018
 
 import scala.annotation.tailrec
 
-object Day1 extends Main[Int, Int, Int] {
+object Day1 extends Main2018[Int, Int, Int] {
 
   println(part1(seqInt))
   println(part2(seqInt))

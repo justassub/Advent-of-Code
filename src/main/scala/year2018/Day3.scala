@@ -2,7 +2,7 @@ package year2018
 
 import scala.collection.mutable
 
-object Day3 extends Main[String, Int, Int] {
+object Day3 extends Main2018[String, Int, Int] {
   println(part1(seqString))
   println(part2(seqString))
 

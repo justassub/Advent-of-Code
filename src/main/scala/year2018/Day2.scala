@@ -1,6 +1,6 @@
 package year2018
 
-object Day2 extends Main[String, Int, String] {
+object Day2 extends Main2018[String, Int, String] {
 
   println(part1(seqString))
   println(part2(seqString))
