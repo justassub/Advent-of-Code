@@ -1,11 +1,11 @@
-package year2018
-
-import util.FileReader
+package util
 
 trait Main[T, R1, R2] extends App {
   def getFileName: String
 
-  implicit val file = s"./src/main/resources/$getFileName"
+  def getPackage: String
+
+  implicit val file = s"./src/main/resources/$getPackage/$getFileName" + ".txt"
   lazy val seqInt = FileReader.readAndMapToInt
   lazy val seqString = FileReader.readResource
 

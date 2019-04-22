@@ -2,7 +2,7 @@ package year2018
 
 import scala.annotation.tailrec
 
-object Day1 extends Main[Int, Int, Int] {
+object Day1 extends Main2018[Int, Int, Int] {
 
   println(part1(seqInt))
   println(part2(seqInt))
@@ -25,6 +25,4 @@ object Day1 extends Main[Int, Int, Int] {
 
     iterate(seq.toStream).getOrElse(0)
   }
-
-  override def getFileName = "day1.txt"
 }

@@ -32,7 +32,7 @@ class Day2Test extends FlatSpec with Matchers {
   }
 
   "Day 2 part 2 " should "be equal to correct Answer" in {
-    implicit val file = "./src/main/resources/day2.txt"
+    implicit val file = Day2.file
     implicit val seq = FileReader.readResource.toList
 
     Day2.part2(seq) shouldEqual "asgwjcmzredihqoutcylvzinx"

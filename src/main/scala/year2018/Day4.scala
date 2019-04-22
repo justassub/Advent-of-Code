@@ -16,8 +16,7 @@ object Day04SupportClasses {
 
 }
 
-object Day4 extends Main[String, Int, Int] {
-  override def getFileName = "day4.txt"
+object Day4 extends Main2018[String, Int, Int] {
 
   println(part1(seqString))
   println(part2(seqString))
@@ -71,6 +70,7 @@ object Day4 extends Main[String, Int, Int] {
     val (id, (minute, _)) = mostFreqMinMap.maxBy(_._2._2)
     id * minute
   }
+
 }
 
 object Parsers {
