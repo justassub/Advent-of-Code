@@ -3,17 +3,21 @@ package year2015
 import year2015.State.State
 
 case class Lamp(x: Int, y: Int) {
+  var brightness = 0
   var isOn: Boolean = false
 
   def turnOn(): Unit = {
+    brightness += 1
     isOn = true
   }
 
   def turOff(): Unit = {
+    if (brightness > 0) brightness -= 1
     isOn = false
   }
 
   def changeState(): Unit = {
+    brightness += 2
     isOn = !isOn
   }
 }
@@ -30,6 +34,7 @@ object Day06 extends Main2015[String, Int, Int] {
   import State._
 
   println(part1(seqString))
+  println(part2(seqString))
 
   override def part1(seq: Seq[String]) = {
     val lamps = Day06Util.createLamps
@@ -40,7 +45,7 @@ object Day06 extends Main2015[String, Int, Int] {
   def changeState(history: Seq[StateHistory], lamps: Seq[Lamp]): Seq[Lamp] = {
     def editState(state: State, lamp: Lamp): Unit = {
       state match {
-        case OFF => lamp.turOff()
+        case OFF => lamp.turOff();
         case ON => lamp.turnOn()
         case TOGGLE => lamp.changeState()
       }
@@ -55,7 +60,11 @@ object Day06 extends Main2015[String, Int, Int] {
     lamps
   }
 
-  override def part2(seq: Seq[String]) = ???
+  override def part2(seq: Seq[String]) = {
+    val lamps = Day06Util.createLamps
+    val history = seq.flatMap(Day06Util.createHistory)
+    changeState(history, lamps).map(_.brightness).sum
+  }
 }
 
 object Day06Util {
@@ -64,8 +73,8 @@ object Day06Util {
 
   def createLamps = {
     for {
-      x <- 1 to 999
-      y <- 1 to 999
+      x <- 0 to 999
+      y <- 0 to 999
     } yield Lamp(x, y)
   }
 
