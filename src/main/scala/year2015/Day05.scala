@@ -12,8 +12,7 @@ object Day05 extends Main2015[String, Int, Int] {
   private def containsForbiddenLetters(string: String) = List("ab", "cd", "pq", "xy").exists(string.contains)
 
   private def containsGivenChars(string: String) = {
-    val allowedVowels = "aeiou"
-    string.filter(allowedVowels.contains(_)).size
+    string.filter("aeiou".contains(_)).size
   }
 
   private def containsDoubleLetters(string: String) = {
@@ -21,6 +20,4 @@ object Day05 extends Main2015[String, Int, Int] {
   }
 
   override def part2(strings: Seq[String]): Int = ???
-
-
 }
