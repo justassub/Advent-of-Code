@@ -3,6 +3,11 @@ package year2015
 case class History(x: Int, y: Int)
 
 object Day03 extends Main2015[String, Int, Int] {
+  1 to 5 foreach print
+  print("Bad Change2")
+  print("Bad Change")
+
+
   println(part1(seqString))
   println(part2(seqString))
 
