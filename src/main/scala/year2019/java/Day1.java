@@ -1,7 +1,5 @@
 package year2019.java;
 
-import year2019.Main2019;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,11 +24,10 @@ public class Day1 extends Main2019<Integer, Integer, Integer> {
     }
 
     private Integer calculate2(Integer fuel, Integer sum) {
-        int fuel_left = (fuel / 3);
-        if (fuel_left - 2 <= 0) {
+        int fuel_left = calculate(fuel);
+        if (fuel_left <= 0) {
             return sum;
         }
-        fuel_left = fuel_left - 2;
         return calculate2(fuel_left, sum + fuel_left);
     }
 
