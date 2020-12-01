@@ -3,7 +3,7 @@ package year2019.java;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day2 extends Main2019<Integer, Integer, Integer> {
+public class Day2 extends Main2019<List<Integer>, List<Integer>, Integer, Integer> {
     public static class NotSupportedOperation extends RuntimeException {
     }
 
