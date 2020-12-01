@@ -3,7 +3,7 @@ package year2019.java;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Day1 extends Main2019<Integer, Integer, Integer> {
+public class Day1 extends Main2019<List<Integer>, List<Integer>, Integer, Integer> {
 
     @Override
     public Integer part1(List<Integer> integers) {
