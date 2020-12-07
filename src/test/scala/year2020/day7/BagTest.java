@@ -1,0 +1,32 @@
+package year2020.day7;
+
+import org.junit.Test;
+import year2020.java.day7.domain.Bag;
+
+import java.util.Collections;
+import java.util.Map;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public class BagTest {
+    @Test
+    public void bagDoesNotContainTest() {
+        Bag bag = new Bag("test", Collections.emptyList());
+        assertFalse(bag.canContainThisColour("Gold"));
+    }
+
+    @Test
+    public void bagDoesContainTest() {
+        Bag bag = new Bag("test", singletonList(Map.entry("Test", 1)));
+        assertTrue(bag.canContainThisColour("Test"));
+    }
+
+    @Test
+    public void bagDoesContainTest2() {
+        Bag bag = new Bag("test", asList(Map.entry("Test", 1), Map.entry("Test2", 2)));
+        assertTrue(bag.canContainThisColour("Test2"));
+    }
+}
