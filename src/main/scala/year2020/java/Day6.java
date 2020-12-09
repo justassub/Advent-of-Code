@@ -1,5 +1,6 @@
 package year2020.java;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.function.UnaryOperator;
@@ -44,12 +45,11 @@ public class Day6 extends Main2020<List<String>, List<String>, Integer, Integer>
                         ))
                 .collect(toSet());
     }
-
-
     public static void main(String[] args) {
         Day6 day06 = new Day6();
         List<String> info = day06.getFileContent().collect(toList());
         System.out.println(day06.part1(info));
         System.out.println(day06.part2(info));
     }
+
 }
