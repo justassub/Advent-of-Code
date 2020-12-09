@@ -38,12 +38,42 @@ public class Day9 extends Main2020<List<Long>, List<Long>, Map.Entry<Integer, Lo
 
     @Override
     protected Long part2(List<Long> input) {
-        return null;
+        return findPreambleNumbersThatHasSum(input, 25);
+    }
+
+    public Long findPreambleNumbersThatHasSum(List<Long> input, int preambleNumbers) {
+        Map.Entry<Integer, Long> firstPartAnswer = returnIndexThatDoesNotFollow(input, preambleNumbers);
+        int index1 = 0;
+        int index2 = 0;
+        outer:
+        for (int i = 0; i <= firstPartAnswer.getKey(); i++) {
+            int k = i + 1;
+            long sum = input.get(i);
+            while (true) {
+                if (sum != firstPartAnswer.getValue()) {
+                    sum += input.get(k);
+                    k++;
+                }
+                if (sum == firstPartAnswer.getValue()) {
+                    index1 = i;
+                    index2 = k;
+                    break outer;
+                }
+                if (sum > firstPartAnswer.getValue()) {
+                    continue outer;
+                }
+            }
+        }
+        List<Long> subList = input.subList(index1, index2);
+        long max = subList.stream().mapToLong(a -> a).max().getAsLong();
+        long min = subList.stream().mapToLong(a -> a).min().getAsLong();
+        return max + min;
     }
 
     public static void main(String[] args) {
         Day9 day9 = new Day9();
         List<Long> integers = day9.getFileContent().map(Long::parseLong).collect(toList());
         System.out.println(day9.part1(integers));
+        System.out.println(day9.part2(integers));
     }
 }

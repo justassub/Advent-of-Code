@@ -52,4 +52,37 @@ public class Day9Test {
         Assert.assertEquals(127, result.getValue().longValue());
         Assert.assertEquals(14, result.getKey().intValue());
     }
+
+    @Test
+    public void part2Example1() {
+        List<Long> values = Stream.of(
+                35,
+                20,
+                15,
+                25,
+                47,
+                40,
+                62,
+                55,
+                65,
+                95,
+                102,
+                117,
+                150,
+                182,
+                127,
+                219,
+                299,
+                277,
+                309,
+                576
+        ).map(Long::valueOf).collect(toList());
+
+
+        Long result = new Day9().findPreambleNumbersThatHasSum(values, 5);
+
+        Assert.assertEquals(62L, result.longValue());
+    }
+
+
 }
