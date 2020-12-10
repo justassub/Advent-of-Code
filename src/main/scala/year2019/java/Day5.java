@@ -108,7 +108,7 @@ public class Day5 {
 
     public static void main(String[] args) {
         Day5 day5 = new Day5();
-        // List<Integer> integers = day5.getFileContentSplited(",").stream().map(Integer::parseInt).collect(Collectors.toList());
+        // List<Integer> integers = lt.justassub.adventofcode.year2020.day5.getFileContentSplited(",").stream().map(Integer::parseInt).collect(Collectors.toList());
         day5.part1(asList(3, 0, 4, 0, 99));
     }
 }
