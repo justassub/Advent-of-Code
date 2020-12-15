@@ -3,8 +3,12 @@ package lt.justassub.adventofcode.year2020.day14;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.joining;
 
 public class Day14Util {
     public static boolean checkIfMask(String string) {
@@ -24,7 +28,7 @@ public class Day14Util {
         String binary = Long.toBinaryString(decimalValue);
         String leftOvers = Stream.generate(() -> "0")
                 .limit(maxSize - binary.length())
-                .collect(Collectors.joining());
+                .collect(joining());
         return leftOvers + binary;
     }
 
@@ -74,37 +78,25 @@ public class Day14Util {
         values.addAll(generateAllPossibleValues(changeWithZero));
         values.addAll(generateAllPossibleValues(changeWithOne));
 
-
         return values;
 
     }
 
     public static Map.Entry<Integer, Integer> extractMemoryLocationAndValueFrom(String line) {
         ///TODO ask nerijus how to do??
-    /*    //mem[8] = 11
+        //mem[8] = 11
         // String to be scanned to find the pattern.
-        String pattern = "mem(.*)(\\d+)(.*+)";
+        String pattern = "mem\\[(\\d+)\\] = (\\d+)";
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(line);
         if (m.find()) {
-            String info= m.group(1);
-            String info0= m.group(0);
-            String info3= m.group(2);
-
-            String[] usefulInfo = info.replace("[", "").replace("]", "").split(" = ");
-
+            String index = m.group(1);
+            String value = m.group(2);
+            return Map.entry(Integer.parseInt(index), Integer.parseInt(value));
+        }
 
 
-            return Map.entry(Integer.parseInt(m.group(0)), Integer.parseInt(m.group(1)));
-        }*/
-
-        line = line
-                .replace("mem", "")
-                .replace("[", "")
-                .replace("]", "");
-
-        String[] usefulInfo = line.split(" = ");
-        return Map.entry(Integer.parseInt(usefulInfo[0]), Integer.parseInt(usefulInfo[1]));
+        throw new RuntimeException();
     }
 
 }
